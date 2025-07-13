@@ -7,8 +7,8 @@ import {
 import { useChainId, useClient } from "wagmi";
 import { baseMangrove } from "@mangrovedao/mgv/addresses";
 import { useMemo } from "react";
-import { createPublicClient, http } from "viem";
-import { base } from "viem/chains";
+import { Address, createPublicClient, http } from "viem";
+import { base, foundry } from "viem/chains";
 
 // in case we need to do some hard wiring
 export const useTargetChainId = () => {
@@ -22,6 +22,15 @@ export function useMangroveAddresses(): MangroveActionsDefaultParams {
   switch (chainId) {
     case base.id:
       return baseMangrove;
+    case foundry.id:
+      return {
+        mgv: process.env.NEXT_PUBLIC_MGV_ADDRESS as Address,
+        mgvReader: process.env.NEXT_PUBLIC_MGV_READER_ADDRESS as Address,
+        mgvOrder: process.env.NEXT_PUBLIC_MGV_READER_ADDRESS as Address,
+        routerProxyFactory: process.env
+          .NEXT_PUBLIC_MGV_READER_ADDRESS as Address,
+        smartRouter: process.env.NEXT_PUBLIC_MGV_READER_ADDRESS as Address,
+      };
   }
   return baseMangrove;
 }

@@ -9,6 +9,7 @@ import { MarketParamsSimplified } from "@/utils/market.utils";
 export function useMarkets() {
   // TODO/warning: hardcoded values for cashnesses that I DO NOT UNDERSTAND (for now)
   const client = useMangroveClient();
+
   return useQuery({
     queryKey: ["markets", client?.chain.id],
     queryFn: async () => {

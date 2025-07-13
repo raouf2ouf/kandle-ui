@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "local:clean": "pkill -f anvil || true && rm -f /tmp/anvil.pid /tmp/mangrove.ipc",
+    "local:deploy": "bun run scripts/deploy.ts"
   },
   "dependencies": {
     "@mangrovedao/mgv": "^0.9.24",
@@ -25,6 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
+    "prool": "^0.0.24",
     "typescript": "^5"
   }
 }

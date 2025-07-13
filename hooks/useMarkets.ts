@@ -4,12 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { MarketParams } from "@mangrovedao/mgv";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
-
-export type MarketParamsSimplified = {
-  base: Address;
-  quote: Address;
-  tickSpacing: bigint;
-};
+import { MarketParamsSimplified } from "@/utils/market.utils";
 
 export function useMarkets() {
   // TODO/warning: hardcoded values for cashnesses that I DO NOT UNDERSTAND (for now)

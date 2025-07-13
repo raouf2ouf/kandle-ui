@@ -1,5 +1,11 @@
 "use client";
 
+import { MarketSelector } from "@/components/MarketSelector";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <MarketSelector />
+    </div>
+  );
 }

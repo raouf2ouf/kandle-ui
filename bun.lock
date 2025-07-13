@@ -4,7 +4,9 @@
     "": {
       "name": "kandle-ui",
       "dependencies": {
+        "@mangrovedao/mgv": "^0.9.24",
         "@radix-ui/themes": "^3.2.1",
+        "@tanstack/react-query": "^5.83.0",
         "next": "15.3.5",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
@@ -142,6 +144,8 @@
     "@lit-labs/ssr-dom-shim": ["@lit-labs/ssr-dom-shim@1.4.0", "", {}, "sha512-ficsEARKnmmW5njugNYKipTm4SFnbik7CXtoencDZzmzo/dQ+2Q0bgkzJuoJP20Aj0F+izzJjOqsnkd6F/o1bw=="],
 
     "@lit/reactive-element": ["@lit/reactive-element@2.1.1", "", { "dependencies": { "@lit-labs/ssr-dom-shim": "^1.4.0" } }, "sha512-N+dm5PAYdQ8e6UlywyyrgI2t++wFGXfHx+dSJ1oBrg6FAxUj40jId++EaRm80MKX5JnlH1sBsyZ5h0bcZKemCg=="],
+
+    "@mangrovedao/mgv": ["@mangrovedao/mgv@0.9.24", "", { "peerDependencies": { "typescript": ">=5.0.4", "viem": ">=2.9.1" }, "optionalPeers": ["typescript"] }, "sha512-awMSYTXbIY3lwNn+QJsdfKZDBNewc45wePuNHmcJvcVqBglwiiFbD0lCuPUpJCdkfv/++GPrLYqh7n1mpodkag=="],
 
     "@metamask/eth-json-rpc-provider": ["@metamask/eth-json-rpc-provider@1.0.1", "", { "dependencies": { "@metamask/json-rpc-engine": "^7.0.0", "@metamask/safe-event-emitter": "^3.0.0", "@metamask/utils": "^5.0.1" } }, "sha512-whiUMPlAOrVGmX8aKYVPvlKyG4CpQXiNNyt74vE1xb5sPvmx5oA7B/kOi/JdBvhGQq97U1/AVdXEdk2zkP8qyA=="],
 

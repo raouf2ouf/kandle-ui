@@ -1,10 +1,14 @@
-@import "tailwindcss";
-
-@import "@radix-ui/themes";
+@import "@radix-ui/themes/styles.css";
+/* @import "tailwindcss"; */
 
 :root {
     --background: #ffffff;
     --foreground: #171717;
+
+    --asks-color-bg: rgba(0, 128, 0, 0.2);
+    --asks-color: rgba(0, 128, 0, 1);
+    --bids-color-bg: rgba(255, 0, 0, 0.2);
+    --bids-color: rgba(255, 0, 0, 0.7);
 }
 
 @theme inline {

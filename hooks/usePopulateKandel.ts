@@ -12,7 +12,11 @@ import {
   MarketParams,
   tickFromPrice,
 } from "@mangrovedao/mgv";
-import { calculateKandelProvision } from "@/utils/kandel.utils";
+import {
+  calculateKandelProvision,
+  GAS_PER_OFFER,
+  GAS_PRICE,
+} from "@/utils/kandel.utils";
 import { kandelABI } from "@/contracts/abi/kandel";
 import { toast } from "react-toastify";
 import { useTraceClient } from "./useClients";
@@ -57,8 +61,15 @@ export function calculatePopulateParams(params: PopulateKandelParams) {
   // Calculate first ask index (middle of the range)
   const firstAskIndex = Math.floor(pricePoints / 2);
 
-  const bidGives = quoteAmountBigInt;
-  const askGives = baseAmountBigInt;
+  // // Calculate number of bids and asks
+  const numBids = Math.ceil(pricePoints / 2);
+  const numAsks = Math.floor(pricePoints / 2);
+
+  const bidGives = numBids > 0 ? quoteAmountBigInt / BigInt(numBids) : 0n;
+  const askGives = numAsks > 0 ? baseAmountBigInt / BigInt(numAsks) : 0n;
+
+  // const bidGives = quoteAmountBigInt;
+  // const askGives = baseAmountBigInt;
 
   // Calculate provision needed
   const requiredProvision = calculateKandelProvision(pricePoints);
@@ -138,8 +149,8 @@ export function usePopulateKandel() {
             calculatedParams.bidGives, // bidGives (quote total)
             calculatedParams.askGives, // askGives (base total)
             {
-              gasprice: 1000000000n, // 1 gwei
-              gasreq: 250000n,
+              gasprice: GAS_PRICE, // 1 gwei
+              gasreq: GAS_PER_OFFER,
               stepSize: BigInt(calculatedParams.stepSize),
               pricePoints: BigInt(calculatedParams.pricePoints),
             },
@@ -161,8 +172,8 @@ export function usePopulateKandel() {
             calculatedParams.bidGives, // bidGives (quote total)
             calculatedParams.askGives, // askGives (base total)
             {
-              gasprice: 1000000000n, // 1 gwei
-              gasreq: 250000n,
+              gasprice: GAS_PRICE, // 1 gwei
+              gasreq: GAS_PER_OFFER,
               stepSize: BigInt(calculatedParams.stepSize),
               pricePoints: BigInt(calculatedParams.pricePoints),
             },

@@ -76,10 +76,13 @@ export function validateKandelParams(
   };
 }
 
+export const GAS_PER_OFFER = 250_000n;
+export const GAS_PRICE = 50n;
+
 export function calculateKandelProvision(
   pricePoints: number,
-  gasPerOffer: bigint = 250000n,
-  gasPrice: bigint = 1000000000n, // 1 gwei
+  gasPerOffer: bigint = GAS_PER_OFFER,
+  gasPrice: bigint = GAS_PRICE, // 1 gwei
 ): bigint {
   const totalOffers = BigInt(pricePoints * 2); // bids + asks
   return gasPerOffer * gasPrice * totalOffers;

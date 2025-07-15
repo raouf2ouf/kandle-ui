@@ -1,30 +1,35 @@
-import { MarketParams } from "@mangrovedao/mgv";
-import { Address } from "viem";
-
-export interface KandelEvent {
-  owner: Address;
-  kandelAddress: Address;
+export interface Kandel {
+  owner: string;
+  kandelAddress: string;
   baseQuoteOlKeyHash: string;
   quoteBaseOlKeyHash: string;
-  blockNumber: bigint;
+  blockNumber: string;
   transactionHash: string;
-  market?: MarketParams;
+  marketBaseToken: string | undefined;
+  marketBaseTokenDecimals: number;
+  marketQuoteToken: string | undefined;
+  marketQuoteTokenDecimals: number;
+  marketTickSpacing?: string | undefined;
+  baseBalance?: number | undefined;
+  quoteBalance?: number | undefined;
+  needsBaseApproval?: boolean;
+  needsQuoteApproval?: boolean;
 }
 
 export interface KandelPosition {
-  address: Address;
-  owner: Address;
-  market: MarketParams;
-  createdAt: number;
+  address: string;
+  owner: string;
+  marketBaseToken?: string | undefined;
+  marketQuoteToken?: string | undefined;
+  marketTickSpacing?: string | undefined;
+  createdAtBlock: string;
   transactionHash: string;
-  admin?: Address;
-  baseBalance?: bigint;
-  quoteBalance?: bigint;
-  params?: {
-    gasprice: bigint;
-    gasreq: bigint;
-    stepSize: bigint;
-    pricePoints: bigint;
-  };
-  baseQuoteTickOffset?: bigint;
+  admin?: string | undefined;
+  baseBalance?: string | undefined;
+  quoteBalance?: string | undefined;
+  gasprice?: string | undefined;
+  gasreq?: string | undefined;
+  stepSize?: string | undefined;
+  pricePoints?: string | undefined;
+  baseQuoteTickOffset?: string;
 }

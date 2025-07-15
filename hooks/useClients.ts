@@ -4,7 +4,7 @@ import {
   MarketParams,
   publicMarketActions,
 } from "@mangrovedao/mgv";
-import { useChainId, useClient } from "wagmi";
+import { useChainId, usePublicClient } from "wagmi";
 import { baseMangrove } from "@mangrovedao/mgv/addresses";
 import { useMemo } from "react";
 import { Address, createPublicClient, http, zeroAddress } from "viem";
@@ -41,7 +41,7 @@ export function useMangroveAddresses(): MangroveActionsDefaultParams & {
 // Use simple client for now;
 // TODO/improvement: Implement chain/transport targeted client
 export const useBaseClient = () => {
-  const client = useClient();
+  const client = usePublicClient();
   return client;
 };
 

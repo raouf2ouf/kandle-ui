@@ -1,3 +1,5 @@
+import { Address } from "viem";
+
 export function floatToFixed96x32(floatValue: number) {
   // Define the scale factor for the 32-bit fractional part
   const scaleFactor = Math.pow(2, 32);
@@ -24,3 +26,8 @@ export function floatToFixed96x32(floatValue: number) {
 
   return fixedPointBigInt;
 }
+
+export const shortenAddress = (address: string | Address | undefined) => {
+  if (!address) return "";
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+};

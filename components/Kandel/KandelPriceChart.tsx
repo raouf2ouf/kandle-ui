@@ -4,6 +4,7 @@ import { memo, useCallback, useMemo, useRef, useState } from "react";
 import { AxisBottom } from "@visx/axis";
 import { scaleLinear } from "@visx/scale";
 import useResizeObserver from "use-resize-observer";
+import { DistributionOffer } from "@mangrovedao/mgv";
 
 interface Props {
   currentPrice: number;
@@ -11,9 +12,11 @@ interface Props {
   initialMax: number;
   onMinChange?: (newMin: number) => void;
   onMaxChange?: (newMax: number) => void;
+  distributionBids?: DistributionOffer[];
+  distributionAsks?: DistributionOffer[];
 }
 
-const height = 100;
+const height = 300;
 
 const KandelPriceChart: React.FC<Props> = ({
   currentPrice,
@@ -21,6 +24,8 @@ const KandelPriceChart: React.FC<Props> = ({
   initialMax,
   onMinChange,
   onMaxChange,
+  distributionAsks = [],
+  distributionBids = [],
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -174,6 +179,34 @@ const KandelPriceChart: React.FC<Props> = ({
             {initialMax.toFixed(2)} (+{fmtPct(initialMax)})
           </text>
         </g>
+
+        {distributionAsks.map((ask, idx) => (
+          <g key={idx}>
+            <line
+              x1={xScale(ask.price)}
+              y1={yTop}
+              x2={xScale(ask.price)}
+              y2={yBottom}
+              stroke="#4caf50"
+              strokeWidth={3}
+              strokeDasharray="10,10"
+            />
+          </g>
+        ))}
+        {distributionBids.map((bid, idx) => (
+          <g key={idx}>
+            <line
+              key={idx}
+              x1={xScale(bid.price)}
+              y1={yTop}
+              x2={xScale(bid.price)}
+              y2={yBottom}
+              stroke="#e55353"
+              strokeWidth={3}
+              strokeDasharray="10,10"
+            />
+          </g>
+        ))}
 
         {/* bottom axis */}
         <AxisBottom

@@ -24,7 +24,12 @@ import { multicall3Bytecode } from "@/contracts/bytecode/multicall3";
 
 const mnemonic = "test test test test test test test test test test test junk";
 
-const instance = anvil({ port: 8545, ipc: "/tmp/mangrove.ipc", mnemonic });
+const instance = anvil({
+  port: 8545,
+  ipc: "/tmp/mangrove.ipc",
+  mnemonic,
+  stepsTracing: true,
+});
 await instance.start();
 console.log("Connected to anvil");
 

@@ -1,0 +1,15 @@
+.steps_container {
+    padding: 10px;
+}
+.step {
+}
+.circle {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}

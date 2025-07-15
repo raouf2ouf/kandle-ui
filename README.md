@@ -13,7 +13,7 @@ Mangrove differs from traditional AMMs by using an **order book with smart offer
 
 **Key Concepts:**
 - **Promise-Based Offers**: Instead of locking liquidity, offers are promises backed by smart contracts.
-> **Comment:** `yes, however the liquidity is still held by the Kandel, wouldn't it be better to have the kandel syphon liquidity from the wallet on the moment of taking the offer? The kandel role would then be mainly to provide provisions in case the funds are not there.`
+> **Comment:** `yes, however the liquidity is still held by the Kandel. Wouldn't it be better to have the kandel syphon liquidity from the wallet direclty when taking the offer? The kandel role would then be mainly to provide provisions in case the funds are not there.`
 
 - **ETH Provisions**: Each offer requires ETH provision to cover gas costs if execution fails (`provision = gasRequired × gasPrice × numberOfOffers`)
 > **Comment:** `This might be the main reason why I could not make populateFromOffset work, along with suspisions about the math behind bidGives and askGives <> baseAmount quoteAmount.`
@@ -40,12 +40,19 @@ The generated price levels for bids and asks follow a geometric progression. it 
 
 ### User Interface Design
 
+![setps](./miscs/screen4.png)
+![setps](./miscs/screen1.png)
+
 The application implements a **unified dashboard approach** where users can:
 
 1. **View All Positions**: See all Kandel positions for the current market in a single interface
-2. **Real-time Preview**: Visualize the geometric distribution before deployment
-3. **Position Management**: Deploy new positions or update existing ones from the same view
-> **Comment:** `I spent a lot of time understanding the consequences of calling populate on an already populated kandel. I still do not fully realize the implications on the Kandel, should all previous offers be rescended manually or would the contract take care of it automatically?`.
+
+2. **Kandel Steps Visualization**: See for any Kandel the current state of its steps (create/approve/fund...)
+![setps](./miscs/screen2.png)
+![setps](./miscs/screen3.png)
+3. **Real-time Preview**: Visualize the geometric distribution before deployment
+4. **Position Management**: Deploy new positions or update existing ones from the same view
+> **Comment:** `I spent a lot of time understanding the consequences of calling populate on an already populated kandel. I still do not fully comprehend the implications on the Kandel, should all previous offers be rescended manually or would the contract take care of it automatically?`.
 
 4. **Order Book Integration**: See how Kandel offers integrate with the live order book
 > **Comment:** `A detailed indexing of the order book is crutial for correctly computing APR of Kandel strategies`.

@@ -13,12 +13,12 @@ export const config = createConfig({
         },
       },
     },
-    /*base */
+    // /*base */
   ],
   connectors: [injected()],
   ssr: true,
   transports: {
-    /*[base.id]: http(),*/
+    // /*[base.id]: http(),
     [foundry.id]: http(),
   },
 });
